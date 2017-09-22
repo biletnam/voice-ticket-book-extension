@@ -1,0 +1,30 @@
+{
+  "name": "Book Soratabi By Speech",
+  "description": "This extension adds voice support for booking of Soratabi site.",
+  "version": "0.1",
+  "icons": {"48": "imgs/on.png"},
+  "background": {
+    "scripts": ["configurations.js", "src/background/background.js"]
+  },
+  "page_action": {
+    "default_title": "空エージェント",
+    "default_icon": "imgs/off.png"
+  },
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": ["https://soratabi.com/*"],
+      "js": [
+        "libs/jquery/jquery-3.2.1.min.js","src/pagescript/watson_helper.js",
+        "src/pagescript/speech2text.js","src/pagescript/text2speech.js",
+        "src/pagescript/watson_conversation.js","src/pagescript/soratabisite.js",
+        "src/pagescript/ticketagent.js","src/pagescript/content_script.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "https://soratabi.com/*",
+    "https://gateway.watsonplatform.net/*"
+  ]
+}
